@@ -9,10 +9,10 @@ const Login = () => {
        console.log(123);
        let newErrors :string[] = [];
        if(!email || email.length === 0) {
-            setErrors([]);
+            
             newErrors.push("Email không được để trống");
        } else if (email.length < 6){ // chiều dài email phải lớn hơn 6 ký tự
-            setErrors([]);
+            
             newErrors.push("Chiều dài email phải lớn hơn 6 ký tự ");
        }
        // set đống newErrors này vào trong state errors
