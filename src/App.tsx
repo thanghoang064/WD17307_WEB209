@@ -4,6 +4,8 @@ import './App.css';
 import Counter from './components/Counter';
 import Login from './components/Login';
 import ParentMount from './components/ParentMount';
+import ComponentA from './components/ComponentA';
+import ComponentB from './components/ComponentB';
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       <header className="App-header">
           {/* <Counter></Counter> */}
           {/* <Login></Login> */}
-          <ParentMount></ParentMount>
+          {/* <ParentMount></ParentMount> */}
+          <ComponentA></ComponentA>
+          <ComponentB></ComponentB>
       </header>
     </div>
   );
