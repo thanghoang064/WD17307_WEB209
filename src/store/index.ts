@@ -1,13 +1,16 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import counterReducer, { ICounterState } from "./counter/reduce";
 import thunk from "redux-thunk";
+import resultReducer, { IResultState } from "./calculate/reduce";
 
 //định nghĩa 1 cái rootstate chung 
 export interface IRootState {
-    counter : ICounterState
+    counter : ICounterState,
+    result : IResultState
 }
 const rootReducer = combineReducers({
-    counter:counterReducer
+    counter:counterReducer,
+    result : resultReducer,
 })
 
 // tạo ra store 

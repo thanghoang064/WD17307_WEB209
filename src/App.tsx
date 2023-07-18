@@ -6,17 +6,21 @@ import Login from './components/Login';
 import ParentMount from './components/ParentMount';
 import ComponentA from './components/ComponentA';
 import ComponentB from './components/ComponentB';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/templates/Layout';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-          {/* <Counter></Counter> */}
-          {/* <Login></Login> */}
-          {/* <ParentMount></ParentMount> */}
-          <ComponentA></ComponentA>
-          <ComponentB></ComponentB>
-      </header>
+              <Routes>
+                <Route path="/" element={<Layout/>}>
+                  <Route
+                    path="dashboard"
+                    element={<ComponentA/>}
+                  />
+                  <Route path="home" element={<Login />} />
+                </Route>
+              </Routes>
     </div>
   );
 }
