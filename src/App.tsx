@@ -8,6 +8,7 @@ import ComponentA from './components/ComponentA';
 import ComponentB from './components/ComponentB';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/templates/Layout';
+import ShowStudent from './components/pages/student/ShowStudent';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
                     path="dashboard"
                     element={<ComponentA/>}
                   />
-                  <Route path="home" element={<Login />} />
+                  <Route path="home" element={<ShowStudent />} />
                 </Route>
               </Routes>
     </div>
