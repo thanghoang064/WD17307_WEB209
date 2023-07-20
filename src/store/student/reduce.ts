@@ -1,21 +1,34 @@
-import { GetListStudentAction, IStudent } from "./action";
+import { type } from "os";
+import { GetListStudentAction, IStudent, LoadingStudentAction } from "./action";
 
 
 //định nghĩa state Student
 export interface IStudentState {
-    sinhviens : IStudent[]
+    sinhviens : IStudent[],
+    isDataLoaded :boolean,
+    error: unknown
+    
 }
 
 const initStudentState : IStudentState = {
-    sinhviens : []
+    sinhviens : [],
+    isDataLoaded : false,
+    error : null
 }
-
-const studentReducer = (state :IStudentState = initStudentState,action : GetListStudentAction ): IStudentState => {
+type ICombinedAction = GetListStudentAction | LoadingStudentAction;
+const studentReducer = (state :IStudentState = initStudentState,action : ICombinedAction ): IStudentState => {
     switch (action.type) {
         case 'get-sv' :
             state = {
                 ...state,
                 sinhviens:action.payload.sinhviens
+            }
+        break;
+        case "loading-sv": 
+           
+            state = {
+                ...state,
+                isDataLoaded : action.payload
             }
         break;
     }
