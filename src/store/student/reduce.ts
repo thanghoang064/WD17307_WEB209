@@ -1,5 +1,5 @@
 import { type } from "os";
-import { GetListStudentAction, IStudent, LoadingStudentAction } from "./action";
+import { AddStudentAction, GetListStudentAction, IStudent, LoadingStudentAction } from "./action";
 
 
 //định nghĩa state Student
@@ -15,7 +15,7 @@ const initStudentState : IStudentState = {
     isDataLoaded : false,
     error : null
 }
-type ICombinedAction = GetListStudentAction | LoadingStudentAction;
+type ICombinedAction = GetListStudentAction | LoadingStudentAction | AddStudentAction;
 const studentReducer = (state :IStudentState = initStudentState,action : ICombinedAction ): IStudentState => {
     switch (action.type) {
         case 'get-sv' :
@@ -24,8 +24,13 @@ const studentReducer = (state :IStudentState = initStudentState,action : ICombin
                 sinhviens:action.payload.sinhviens
             }
         break;
+        case 'add-sv' :
+            state = {
+                ...state,
+                sinhviens: state.sinhviens.concat(action.payload)
+            }
+        break;
         case "loading-sv": 
-           
             state = {
                 ...state,
                 isDataLoaded : action.payload

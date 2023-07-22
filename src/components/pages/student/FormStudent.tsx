@@ -1,10 +1,47 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import { IStudent, addStudent } from "../../../store/student/action";
 
 const FormStudent = () => {
+    const [name,setName] = useState<string>('');
+    const [birth,setBirth] = useState<number>(0);
+    const dispatch : Dispatch<any> = useDispatch();
+    const [id,setId] = useState<number>(0);
+    const add = () => {
+        const sv : IStudent = {
+            id,
+            name,
+            birth
+        }
+        dispatch(addStudent(sv));
+    }
+
     return (
         <>
-            Name <input type="text"/>
-            Birth <input type="text"/>
-            <button> Save </button>
+              <div className="md:flex md:items-center mb-6">
+                <div className="md:w-1/3">
+                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" >
+                    Name
+                </label>
+                </div>
+                <div className="md:w-2/3">
+                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" onChange={(event)=> setName(event.target.value)} />
+                </div>
+            </div>
+            <div className="md:flex md:items-center mb-6">
+                <div className="md:w-1/3">
+                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                   Birth
+                </label>
+                </div>
+                <div className="md:w-2/3">
+                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="text" onChange={(event)=> setBirth(+event.target.value)}/>
+                </div>
+            </div>
+            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button" onClick={add}>
+                Save
+            </button>
         </>
     );
 }

@@ -1,4 +1,5 @@
-import { GetListDispatchType, LoadingDispatchType } from "./type"
+import { type } from "os"
+import { AddStudentDispatchType, GetListDispatchType, LoadingDispatchType } from "./type"
 
 export interface IStudent {
     id : number,
@@ -11,9 +12,14 @@ interface IGetListStudentPayLoad {
     loading : boolean,
     error: unknown
 }
+
 export type GetListStudentAction = {
     type: 'get-sv',
     payload : IGetListStudentPayLoad
+}
+export type AddStudentAction = {
+    type: 'add-sv',
+    payload :IStudent
 }
 export type LoadingStudentAction = {
     type:'loading-sv',
@@ -40,6 +46,30 @@ export const fetchSinhVienAction = () => {
         }
     }
 }
+export function addStudent(sv :IStudent) {
+    return async (dispatch : AddStudentDispatchType) => {
+        try {
+            const response = await fetch('http://localhost:3001/students',{
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(sv)
+            });
+            // định nghĩa data nhận về từ API 
+            if(!response.ok) {
+                console.log('Errror');
+            }
+             const data = await response.json();
+            dispatch({
+                type : 'add-sv',
+                payload : data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+} 
 
 export const loadingStudent = (loading = false) => {
     return (dispatch : LoadingDispatchType) => {

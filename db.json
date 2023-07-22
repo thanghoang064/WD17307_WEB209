@@ -16,6 +16,21 @@
       "id": 2,
       "name": "Trần trung nghĩa 1",
       "birth": 2002
+    },
+    {
+      "id": 3,
+      "name": "",
+      "birth": 0
+    },
+    {
+      "id": 4,
+      "name": "nghĩa",
+      "birth": 1990
+    },
+    {
+      "id": 5,
+      "name": "nghĩa",
+      "birth": 1990
     }
   ],
   "comments": [
