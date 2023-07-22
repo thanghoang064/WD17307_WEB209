@@ -1,5 +1,5 @@
 import { type } from "os"
-import { AddStudentDispatchType, GetListDispatchType, LoadingDispatchType } from "./type"
+import { AddStudentDispatchType, DeleteStudentDispatchType, GetListDispatchType, LoadingDispatchType } from "./type"
 
 export interface IStudent {
     id : number,
@@ -24,6 +24,10 @@ export type AddStudentAction = {
 export type LoadingStudentAction = {
     type:'loading-sv',
     payload : boolean
+}
+export type DeleteStudentAction = {
+    type : 'xoa-sv',
+    payload : IStudent
 }
 
 //lấy sinh viên 
@@ -64,6 +68,28 @@ export function addStudent(sv :IStudent) {
             dispatch({
                 type : 'add-sv',
                 payload : data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+} 
+
+export function deleteStudent(sv :IStudent) {
+    return async (dispatch : DeleteStudentDispatchType) => {
+        try {
+            const response = await fetch(`http://localhost:3001/students/${sv.id}`,{
+                method : 'DELETE',
+            
+            });
+            // định nghĩa data nhận về từ API 
+            if(!response.ok) {
+                console.log('Errror');
+            }
+             const data = await response.json();
+            dispatch({
+                type : 'xoa-sv',
+                payload : sv
             })
         } catch (error) {
             console.log(error);

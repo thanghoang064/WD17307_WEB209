@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { fetchSinhVienAction, loadingStudent } from "../../../store/student/action";
+import { IStudent, deleteStudent, fetchSinhVienAction, loadingStudent } from "../../../store/student/action";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../../store";
 import FormStudent from "./FormStudent";
@@ -18,6 +18,9 @@ const ShowStudent = () => {
     if(!studentState.isDataLoaded) {
         return <div>Loading</div>
     }
+    const handleDeleteSV = (sv : IStudent) => {
+        dispatch(deleteStudent(sv));
+    }
     return (
         <>
         <FormStudent/>
@@ -26,12 +29,16 @@ const ShowStudent = () => {
                     <td>ID</td>
                     <td>Name</td>
                     <td>Birth</td>
+                    <td>Action</td>
                 </tr>
                 {studentState.sinhviens.map((sv,index)=>{
                      return <tr key={index}>
                      <td>{sv.id}</td>
                      <td>{sv.name}</td>
                      <td>{sv.birth}</td>
+                     <td>
+                        <button onClick={event => handleDeleteSV(sv)}> Xóa</button>
+                     </td>
                  </tr>   
                 })}
                 
