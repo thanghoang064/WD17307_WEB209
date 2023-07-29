@@ -5,6 +5,7 @@ import { IStudent, deleteStudent, fetchSinhVienAction, loadingStudent } from "..
 import { useSelector } from "react-redux";
 import { IRootState } from "../../../store";
 import FormStudent from "./FormStudent";
+import { CartAction } from "../../../store/order/action";
 
 const ShowStudent = () => {
     const dispatch : Dispatch<any> = useDispatch();
@@ -20,6 +21,9 @@ const ShowStudent = () => {
     }
     const handleDeleteSV = (sv : IStudent) => {
         dispatch(deleteStudent(sv));
+    }
+    const handleAddCart = (sv : IStudent) => {
+        dispatch(CartAction(sv));
     }
     return (
         <>
@@ -38,6 +42,7 @@ const ShowStudent = () => {
                      <td>{sv.birth}</td>
                      <td>
                         <button onClick={event => handleDeleteSV(sv)}> Xóa</button>
+                        <button onClick={event => handleAddCart(sv)}> Add Cart</button>
                      </td>
                  </tr>   
                 })}

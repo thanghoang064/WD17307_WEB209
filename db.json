@@ -8,11 +8,6 @@
   ],
   "students": [
     {
-      "id": 1,
-      "name": "Trần trung nghĩa",
-      "birth": 2001
-    },
-    {
       "id": 2,
       "name": "Trần trung nghĩa 1",
       "birth": 2002
