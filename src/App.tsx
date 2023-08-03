@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './components/templates/Layout';
 import ShowStudent from './components/pages/student/ShowStudent';
 import { CounterTk } from './components/CounterTk';
+import Student from './components/Student';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
                   <Route path="home" element={<ShowStudent />} />
                 </Route>
               </Routes> */}
-              <CounterTk/>
+              <Student/>
     </div>
   );
 }

@@ -1,10 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from './counter/counterSlice'
+import studentSlice from './student/studentSlice'
+import { studentApi } from './student/student.service'
 
 export const store = configureStore({
   reducer: {
     counter: counterSlice,
+    student : studentSlice,
+    [studentApi.reducerPath]: studentApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware().concat(studentApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
