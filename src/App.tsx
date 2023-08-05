@@ -11,20 +11,21 @@ import Layout from './components/templates/Layout';
 import ShowStudent from './components/pages/student/ShowStudent';
 import { CounterTk } from './components/CounterTk';
 import Student from './components/Student';
+import Student1 from './components/Student1';
 
 function App() {
   return (
     <div className="App">
-              {/* <Routes>
-                <Route path="/" element={<Layout/>}>
+              <Routes>
+                <Route path="/" element={ <Layout/>}>
                   <Route
                     path="dashboard"
-                    element={<ComponentA/>}
+                    element={<Student/>}
                   />
-                  <Route path="home" element={<ShowStudent />} />
+                  <Route path="home" element={<Student1 />} />
                 </Route>
-              </Routes> */}
-              <Student/>
+              </Routes>
+             
     </div>
   );
 }
